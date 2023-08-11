@@ -1,16 +1,17 @@
 pipeline {
     agent any
-
+    tools {
+        gradle '7.6'
+    }
     stages {
         stage('build gradle') {
             steps {
                 sh 'echo hola'
                 withGradle {
-                    sh './gradlew clean'
+                    sh 'gradle clean'
                 }
-
                 withGradle {
-                    sh './gradlew bootJar'
+                    sh 'gradle bootJar'
                 }
             }
         }
